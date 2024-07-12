@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+
 /*
 1. Go to “http://demo.guru99.com/test/upload”
 2. Upload file into Choose File
@@ -35,6 +37,7 @@ public class T3_upload {
 
         WebElement successMessage = Driver.getDriver().findElement(By.xpath("//h3[@id='res']"));
         String expected = "1 file\nhas been successfully uploaded.";
+        assertEquals(successMessage.getText(), expected);
 
 
 
