@@ -2,6 +2,7 @@ package io.loop.test.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -36,6 +37,9 @@ public class Driver {
             switch (browserType.toLowerCase()){
                 case "chrome":
                     driver = new ChromeDriver();
+//                    ChromeOptions options = new ChromeOptions();
+//                    options.addArguments("--incognito");
+//                    driver = new ChromeDriver(options);
                     break;
                 case "firefox":
                     driver = new FirefoxDriver();
