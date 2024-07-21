@@ -14,11 +14,13 @@ public class LoopPracticeDragDropPage {
     }
 
     // this is how I am going to find the element small Circle
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//div[@id='draggable']")
     public WebElement smallCircle;
 
     @FindBy (id = "droptarget")
     public WebElement bigCircle;
+
+
 
 
 }

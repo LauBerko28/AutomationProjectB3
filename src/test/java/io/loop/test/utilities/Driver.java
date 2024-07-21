@@ -24,7 +24,7 @@ public class Driver {
     in order to access this driver i need a public getter method
     reusable method that will return the same driver instance everytime is called
      */
-    // Im creating the below method so everytime I create a new driver what it does instead of creating a new space in the heap, it re-assignes the value to the original driver
+    // Im creating the below method so everytime I create a new driver what it does instead of creating a new space in the heap, it re-assigns the value to the original driver
     // IQ: What is singleton --> in order to use only one instance of driver, in order to achieve i need private constructor and private instance of the class, also need the getter method to acces it, the same needs to be first null to check if its empty and if so it will assign a new value of this. I make the static method to ensure the value is empty as thios static method is the very first one that will run before the class
 
     /**
