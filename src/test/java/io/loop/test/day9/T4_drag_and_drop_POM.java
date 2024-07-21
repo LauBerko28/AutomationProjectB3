@@ -3,6 +3,7 @@ package io.loop.test.day9;
 import io.loop.pages.LoopPracticeDragDropPage;
 import io.loop.test.utilities.Driver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -47,11 +48,65 @@ public class T4_drag_and_drop_POM {
     }
 
     @Test
-    public void dran_small_here_test(){
+    public void drag_small_here_test(){
         String expected = "Drag the small circle here.";
         String actual = loopPracticeDragDropPage.bigCircle.getText();
         assertEquals(actual,expected,"Actual does not match the expected");
     }
 
+    @Test
+    public void drop_here_test(){
+       actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+               .clickAndHold()
+               .moveByOffset(100,100)
+               .pause(3000)
+               .perform();
+       assertEquals(loopPracticeDragDropPage.bigCircle.getText().trim(),"Drop here.", "expected does not match the actual");
+    }
+
+    @Test
+    public void drop_now_test(){
+        actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+                .clickAndHold()
+                .moveByOffset(0,-200)
+                .pause(3000)
+                .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText().trim(),"Now drop...", "expected does not match the actual");
+    }
+
+    @Test
+    public void move_anywhere_test(){
+        actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+                .clickAndHold()
+                .moveByOffset(10,200)
+                .pause(3000)
+                .release()
+                .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText().trim(),"Try again!", "expected does not match the actual");
+    }
+
+    @Test
+    public void drop_right_location (){
+        actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+                .clickAndHold()
+                .moveToElement(loopPracticeDragDropPage.bigCircle)
+                .release()
+                .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText().trim(),"You did great!", "expected does not match actual");
+    }
+
+    @Test
+    public void drop_right_location_Drag_and_drop (){
+        actions.dragAndDrop(loopPracticeDragDropPage.smallCircle,loopPracticeDragDropPage.bigCircle)
+                        .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText().trim(),"You did great!", "expected does not match actual");
+    }
+
+
+
+    @AfterMethod
+    public void tearDown_method(){
+        Driver.closeDriver();
+    }
 
 }
